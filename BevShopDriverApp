@@ -1,0 +1,116 @@
+
+
+import java.util.Scanner;
+
+public class BevShopDriverApp {
+
+
+
+	private static final int MIN_AGE_FOR_ALCOHOL = 21;
+	private static int category;
+
+	public static void main(String[] args) {
+		BevShop bevShop = new BevShop();
+		Order order = new Order();
+		Scanner scanner = new Scanner(System.in);
+		Customer tempCustomer = new Customer("", 0);
+
+		
+		System.out.println("The current order in process can have at most " + bevShop.getMaxOrderForAlcohol()
+				+ " alcoholic beverages.");
+		System.out.println("The minimum age to order alcohol drink is " + bevShop.getMinAgeForAlcohol()); 
+
+		System.out.println("Start please a new order!");
+		bevShop.startNewOrder(1, Day.MONDAY, "John", 23);
+		System.out.println("Total on the Order:" + bevShop.getCurrentOrder().calcOrderTotal());
+		
+		tempCustomer.setName("john");
+		bevShop.startNewOrder(12, Day.MONDAY, tempCustomer.getName(), tempCustomer.getAge());
+		System.out.print("Would you please enter your name: "+ tempCustomer.getName()); 
+	
+		tempCustomer.setAge(23);
+		
+		System.out.print("\n Would you please enter your age: "+ tempCustomer.getAge());		
+
+		if (bevShop.isValidAge(tempCustomer.getAge())) {
+			System.out.println("\n Your age is above " + MIN_AGE_FOR_ALCOHOL + " and you are eligible to order alcohol"); 
+		} else {
+			System.out.println("You are not eligible to order alcohol, and if you try you will be kicked out!");
+
+		}
+		System.out.println("\nplease add an alcohol drink");
+		// first drink
+		 bevShop.processAlcoholOrder("vodka", Size.SMALL);
+		 
+		 System.out.println("The current order of drinks is "+ bevShop.getNumOfAlcoholDrink() );
+		 System.out.println("Total on the Order: " + bevShop.getCurrentOrder().calcOrderTotal());
+		 System.out.println("Your current alcohol drink order is less than "+ bevShop.getMaxOrderForAlcohol()+" \n");
+		 System.out.println("would you please add a second alcohol drink");
+		 // second drink
+	      bevShop.processAlcoholOrder("whiskey", Size.LARGE);
+	      System.out.println("The current order of drinks is "+ bevShop.getNumOfAlcoholDrink() );
+	      System.out.println("Total on the Order: " + bevShop.getCurrentOrder().calcOrderTotal());
+	      System.out.println("Your current alcohol drink order is less than "+ bevShop.getMaxOrderForAlcohol()+" \n");
+	      
+	      System.out.println("add a third alcohol drink ");
+	      
+	      bevShop.processAlcoholOrder("Rum", Size.SMALL);
+	      System.out.println("The current order of drinks is "+ bevShop.getNumOfAlcoholDrink() );
+	      System.out.println("Total on the Order: " + bevShop.getCurrentOrder().calcOrderTotal());
+	      if (bevShop.getNumOfAlcoholDrink() >= bevShop.getMaxOrderForAlcohol()) {
+				System.out.println("You have reached the maximum number of alcohol drinks for this order.");
+			
+	      System.out.println("Would you please add a COFFEE to your order: ");
+	      bevShop.processCoffeeOrder("Latte", Size.MEDIUM, true, false);
+	      
+	      System.out.println("The current order of drinks is "+ bevShop.getCurrentOrder().getTotalItems());
+	      System.out.println("Total on the Order: " + bevShop.getCurrentOrder().calcOrderTotal());
+		
+	      System.out.println("#------------------------------------#");
+	        System.out.println("Would you please start a new order");
+	        
+	        // new customer 
+	        Customer customer2 = new Customer("Ray", 18);
+	        bevShop.startNewOrder(15, Day.WEDNESDAY, customer2.getName(), customer2.getAge());
+	        
+	        System.out.print("Would you please enter your name: "+ customer2.getName()); 
+	        System.out.print("\nWould you please enter your age: "+customer2.getAge());
+	        System.out.print("\nTotal on the Order: " + bevShop.getCurrentOrder().calcOrderTotal());
+	        System.out.print("\nwould you please add a SMOOTHIE to order ");
+	        bevShop.processSmoothieOrder("strawberry Banana Smoothie", Size.MEDIUM, 5, true);
+	        System.out.println("\nTotal on the Order: " + bevShop.getCurrentOrder().calcOrderTotal());
+	        System.out.print("would you please add a SMOOTHIE to order ");
+	        bevShop.processSmoothieOrder("Mango Smoothie", Size.SMALL, 3, false);
+	        System.out.print("\nwould you please add a COFFEE to order ");
+	        bevShop.processCoffeeOrder("Cappuccino", Size.SMALL, false, true);
+	        System.out.println("\nTotal on the Order: " + bevShop.getCurrentOrder().calcOrderTotal());
+	        System.out.print("Would you please add a drink  ");
+	        bevShop.getNumOfAlcoholDrink();
+	        if (bevShop.isValidAge(bevShop.getCurrentOrder().getCustomer().getAge())) {
+				
+				bevShop.processAlcoholOrder("Wine", Size.MEDIUM);
+			} else
+				System.out.println("\nAge not appropriate for alcohol drink!!");
+	   
+	         
+	        category = bevShop.getCurrentOrder().getOrderNo();
+	        
+	        System.out.println("The current order of drinks is "+ bevShop.getCurrentOrder().getTotalItems());
+	        if (bevShop.findOrder(category) != 1) {
+			System.out.println("Total on the Order:" + bevShop.totalOrderPrice(category)); 
+	      
+	        }
+	        System.out.print("The total number of fruits is "+bevShop.getMaxNumOfFruits());
+	        
+			
+	        if (bevShop.isMaxFruit(category)) {
+				
+				System.out.println("\nYou reached a Maximum number of fruits");
+			}
+	        
+	        System.out.println("\nTotal on the Order: " + bevShop.getCurrentOrder().calcOrderTotal());
+	        System.out.println("Total amount for all orders:" + bevShop.totalMonthlySale()); 
+}
+}
+		
+}
