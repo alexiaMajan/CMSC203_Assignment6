@@ -1,0 +1,95 @@
+/*
+ * Class: CMSC203 
+ * Instructor:Dr. Grinberg
+ * Description: (Give a brief description for each Class)
+ * Due: 12/3/2023
+ * Platform/compiler:
+ * I pledge that I have completed the programming  
+ * assignment independently. I have not copied the code 
+ * from a student or any source. I have not given my code 
+ * to any student.
+   Print your Name here: Alexia Majano
+*/
+
+
+
+public abstract class Beverage {
+
+	String name;
+	Type tP;
+	Size siz;
+	final double basePrice = 2.0;
+	final double sizeUp = 1.0;
+	
+	public Beverage(String name, Type type, Size size) {
+		this.name =name;
+		this.tP = type;
+		this.siz=size;
+	
+	}
+	
+	public Type getType() {
+	
+		return this.tP;
+	}
+	
+	public Size getSize() {
+		
+		return this.siz;
+		
+	}
+	public String getname() {
+		
+		return this.name;
+		
+	}
+	public double getBasePrice() {
+		
+		return basePrice;
+	}
+	public double addSizePrice() {
+		if(this.siz == Size.SMALL){
+			return basePrice;
+		}else if (this.siz == Size.MEDIUM)
+		{
+			return basePrice + 0.5;
+		}else
+			return basePrice + sizeUp+1;
+		
+	}
+	
+    @Override
+	public String toString() {
+		
+		return getname() +" ,"+ getSize();
+		
+	}
+	
+    @Override
+    public boolean equals(Object anotherBev) {
+    	 Beverage beverage = (Beverage) anotherBev;
+        if (this == anotherBev) return true;
+        if (anotherBev == null || getClass() != anotherBev.getClass()) return false;
+       
+        if (!name.equals(beverage.name)) return false;
+        if (!tP.equals(beverage.tP)) return false;
+        return siz.equals(beverage.siz);
+    }
+    	
+    
+    
+    public abstract double calcPrice();
+    
+    
+    	
+    }
+    
+    
+    
+	
+	
+	
+	
+	
+	
+
