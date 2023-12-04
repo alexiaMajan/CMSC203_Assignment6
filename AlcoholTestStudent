@@ -1,0 +1,58 @@
+/*
+ * Class: CMSC203 
+ * Instructor:Dr. Grinberg
+ * Description: (Give a brief description for each Class)
+ * Due: 12/3/2023
+ * Platform/compiler:
+ * I pledge that I have completed the programming  
+ * assignment independently. I have not copied the code 
+ * from a student or any source. I have not given my code 
+ * to any student.
+   Print your Name here: Alexia Majano
+*/
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class AlcoholTestStudent {
+	Alcohol alcohol1 , alcohol2 ,alochol3;
+
+	@Before
+	public void setUp() throws Exception {
+		alcohol1 = new  Alcohol ("name1", Size.SMALL, true );
+		alcohol2 = new  Alcohol ("name2", Size.SMALL, true );
+		alochol3 = new  Alcohol ("name3", Size.LARGE, false );
+	
+		
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		alcohol1=alcohol2=alochol3=null;
+	}
+	
+	@Test
+	public void testGetBasePrice()
+	{
+		assertEquals(2.0,alcohol1.getBasePrice(), .01);
+		assertEquals(2.0,alcohol2.getBasePrice(), .01);
+		assertEquals(2.0,alochol3.getBasePrice(), .01);
+		
+	}
+ 
+	
+	@Test
+	public void testToString() {
+		
+		assertTrue(alcohol1.toString().contains(alcohol1.getname()));
+		assertTrue(alcohol1.toString().contains(String.valueOf(alcohol1.calcPrice()) ));
+		assertTrue(alcohol1.toString().contains(alcohol1.getSize().toString() ));
+	 
+	 
+	}
+	
+
+}
