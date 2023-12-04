@@ -1,0 +1,114 @@
+/*
+ * Class: CMSC203 
+ * Instructor:Dr. Grinberg
+ * Description: (Give a brief description for each Class)
+ * Due: 12/3/2023
+ * Platform/compiler:
+ * I pledge that I have completed the programming  
+ * assignment independently. I have not copied the code 
+ * from a student or any source. I have not given my code 
+ * to any student.
+   Print your Name here: Alexia Majano
+*/
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class CoffeeTestStudent {
+	Coffee coffee1, coffee2;
+	@BeforeEach
+	public void setUp() throws Exception {
+		coffee1 = new Coffee("Expresso", Size.SMALL, false, false);
+		coffee2 = new Coffee("Latte", Size.MEDIUM, false, true);
+	}
+	@AfterEach
+	void tearDown() throws Exception {
+		coffee1 = coffee2 = null;
+	}
+
+	@Test
+	void testGetBasePrice() {
+		assertEquals(2.0, coffee1.getBasePrice(), .01);
+		assertEquals(2.0, coffee2.getBasePrice(), .01);
+		
+	
+		
+	}
+	@Test
+	void testCalcPrice() {
+		assertEquals(2.0, coffee1.calcPrice(), .01); 
+		
+		
+	}
+	@Test
+	void testToString() {
+		
+		assertTrue(coffee1.toString().contains(coffee1.getname()));
+		assertTrue(coffee1.toString().contains(String.valueOf(coffee1.calcPrice())));
+		assertTrue(coffee1.toString().contains(coffee1.getSize().toString()));
+		assertTrue(!coffee1.toString().contains("+ Extra shot"));
+		assertTrue(!coffee1.toString().contains("+ Extra syrup"));
+		// coffee 2
+		assertTrue(coffee2.toString().contains(coffee2.getname()));
+		assertTrue(coffee2.toString().contains(String.valueOf(coffee2.calcPrice())));
+		assertTrue(coffee2.toString().contains(coffee2.getSize().toString()));
+		assertTrue(!coffee2.toString().contains("+ Extra shot"));
+		assertTrue(!coffee2.toString().contains("+ Extra syrup"));
+		
+	
+	
+}
+	@Test
+	void testEquals() {
+		Coffee coffee1Copy = new Coffee("Expresso", Size.SMALL, false, false);
+		assertTrue(coffee1.equals(coffee1Copy)); 
+	}
+
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
