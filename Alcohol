@@ -1,0 +1,52 @@
+/*
+ * Class: CMSC203 
+ * Instructor:Dr. Grinberg
+ * Description: (Give a brief description for each Class)
+ * Due: 12/3/2023
+ * Platform/compiler:
+ * I pledge that I have completed the programming  
+ * assignment independently. I have not copied the code 
+ * from a student or any source. I have not given my code 
+ * to any student.
+   Print your Name here: Alexia Majano
+*/
+
+
+public class Alcohol extends Beverage {
+
+	
+	private boolean weekend;
+	private double weekendCost=0.60;
+	
+	public Alcohol(String name, Size size, boolean weekend) {
+		super(name, Type.ALCOHOL, size);
+		  this.weekend = weekend;
+	}
+
+	public boolean isWeekend() {
+        return weekend;
+    }
+	 public void Weekend(boolean weekend) {
+	        this.weekend = weekend;
+	    }
+
+	
+	 @Override
+	 public String toString() {
+
+		
+			return getname() + "," + getSize() + " ,"+ isWeekend()+" ," + calcPrice();
+	 }
+	@Override
+	public double calcPrice() {
+
+		 return getBasePrice() + weekendCost;
+	}
+	
+	public boolean equals(Object anotherBev)
+	{
+		Alcohol alcohol = (Alcohol)anotherBev;
+		return super.equals(anotherBev) && this.weekend == alcohol.weekend;
+	}
+
+}
